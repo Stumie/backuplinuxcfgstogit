@@ -12,11 +12,11 @@ outputlogger (){
     while read -r subline; do log "$subline"; done
 } 
 
-# Script should be run as root
-if [ "$(id -u)" != "0" ]; then
-  log "ABORT. This script should be run as root"
-  exit 1
-fi
+# # Script should be run as root
+# if [ "$(id -u)" != "0" ]; then
+#   log "ABORT. This script should be run as root"
+#   exit 1
+# fi
 
 # Script will only run with the correct number of parameters provided
 if (( $# != 4 )); then
@@ -24,9 +24,9 @@ if (( $# != 4 )); then
   exit 1
 fi
 
-# Get necessary packages under Debian GNU/Linux
-apt-get update | outputlogger
-apt-get install coreutils git -y | outputlogger
+# # Get necessary packages under Debian GNU/Linux
+# apt-get update | outputlogger
+# apt-get install coreutils git -y | outputlogger
 
 # Set variables
 TARGETDIR=$HOME/$(basename $0)_repospace
