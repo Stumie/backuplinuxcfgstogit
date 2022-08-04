@@ -47,13 +47,19 @@ log "Home directory from executing user is $HOME"
 
 #################################################################################################
 
-# Clone or pull from git repo and prepare git settings
+# # Variant 1: Clone or pull from git repo and prepare git settings
+# if [[ -d "$TARGETDIR" ]]; then
+#   git -C $TARGETDIR config pull.ff only | outputlogger
+#   git -C $TARGETDIR pull | outputlogger
+# else
+#   git clone $GITREMOTEREPOURL $TARGETDIR | outputlogger
+# fi
+
+# Variant 2: Clone or pull from git repo and prepare git settings
 if [[ -d "$TARGETDIR" ]]; then
-  git -C $TARGETDIR config pull.ff only | outputlogger
-  git -C $TARGETDIR pull | outputlogger
-else
-  git clone $GITREMOTEREPOURL $TARGETDIR | outputlogger
+  rm -vrf $TARGETDIR | outputlogger
 fi
+git clone $GITREMOTEREPOURL $TARGETDIR | outputlogger
 git -C $TARGETDIR config user.name $GITUSER | outputlogger
 git -C $TARGETDIR config user.email $GITUSEREMAIL | outputlogger
 
