@@ -76,7 +76,7 @@ for line in $file; do
     mkdir -pv $TARGETPATH | outputlogger
 
     log "Copy $line to $TARGETPATH if necessary"
-    cp -purv $line $TARGETPATH | outputlogger
+    rsync -ahv $line $TARGETPATH | outputlogger
 
 done
 
