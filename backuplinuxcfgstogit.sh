@@ -12,21 +12,11 @@ outputlogger (){
     while read -r subline; do log "$subline"; done
 } 
 
-# # Script should be run as root
-# if [ "$(id -u)" != "0" ]; then
-#   log "ABORT. This script should be run as root"
-#   exit 1
-# fi
-
 # Script will only run with the correct number of parameters provided
 if (( $# != 4 )); then
   log "ABORT. Not all or too many parameters provided"
   exit 1
 fi
-
-# # Get necessary packages under Debian GNU/Linux
-# apt-get update | outputlogger
-# apt-get install coreutils git -y | outputlogger
 
 # Set variables
 TARGETDIR=$HOME/$(basename $0)_repospace
@@ -47,15 +37,6 @@ log "Home directory from executing user is $HOME"
 
 #################################################################################################
 
-# # Variant 1: Clone or pull from git repo and prepare git settings
-# if [[ -d "$TARGETDIR" ]]; then
-#   git -C $TARGETDIR config pull.ff only | outputlogger
-#   git -C $TARGETDIR pull | outputlogger
-# else
-#   git clone $GITREMOTEREPOURL $TARGETDIR | outputlogger
-# fi
-
-# Variant 2: Clone or pull from git repo and prepare git settings
 if [[ -d "$TARGETDIR" ]]; then
   rm -vrf $TARGETDIR | outputlogger
 fi
