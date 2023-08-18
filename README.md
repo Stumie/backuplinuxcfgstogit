@@ -4,7 +4,7 @@ Script to automate Debian GNU/Linux config backup into a Git repo
 ## Dependencies
 Install dependencies (`coreutils` and `git`) before using this script, e. g. like this:
 ```
-sudo apt update && sudo apt install coreutils rsync git -y
+sudo apt-get update && sudo apt-get install -y coreutils rsync git
 ```
 
 ## Usage like e. g.
